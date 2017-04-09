@@ -1,0 +1,46 @@
+﻿@model PTI.PowerBI.Wrapper.Entities.Reports
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reports</h2>
+
+@if (Model != null && Model.value.Count() > 0)
+{
+    <div class="row">
+        <div class="col-md-3">
+            Id
+        </div>
+        <div class="col-md-3">
+            Name
+        </div>
+        <div class="col-md-3">
+            Embed Url
+        </div>
+        <div class="col-md-3">
+            Web Url
+        </div>
+    </div>
+    foreach (var singleReport in Model.value)
+    {
+        <div class="row">
+            <div class="col-md-3">
+                @singleReport.id
+            </div>
+            <div class="col-md-3">
+                @singleReport.name
+            </div>
+            <div class="col-md-3">
+                <a href="@singleReport.embedUrl" target="_blank">@singleReport.embedUrl</a>
+            </div>
+            <div class="col-md-3">
+                <a href="@singleReport.webUrl" target="_blank">@singleReport.webUrl</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <label class="has-error">There is no data</label>
+}
